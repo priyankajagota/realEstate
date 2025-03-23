@@ -1,18 +1,4 @@
-# import streamlit as st
-# import pandas as pd
-# import numpy as np
 
-# # Load Data
-# @st.cache_data
-# def load_data():
-#     df = pd.read_csv("data/real_estate.csv",encoding='latin-1')
-#     return df
-
-# df = load_data()
-
-# st.title("Canadian Mortgage and Housing Corporation Story")
-# st.write("Analyze real estate trends in Canada for a decade")
-# Import libraries
 from pyparsing import col
 import streamlit as st
 import pandas as pd
@@ -30,58 +16,7 @@ st.set_page_config(
 
 alt.themes.enable("dark")
 
-#######################
-# CSS styling
-# st.markdown("""
-# <style>
 
-# [data-testid="block-container"] {
-#     padding-left: 2rem;
-#     padding-right: 2rem;
-#     padding-top: 1rem;
-#     padding-bottom: 0rem;
-#     margin-bottom: -7rem;
-# }
-
-# [data-testid="stVerticalBlock"] {
-#     padding-left: 0rem;
-#     padding-right: 0rem;
-# }
-
-# [data-testid="stMetric"] {
-#     background-color: #393939;
-#     text-align: center;
-#     padding: 15px 0;
-# }
-
-# [data-testid="stMetricLabel"] {
-#   display: flex;
-#   justify-content: center;
-#   align-items: center;
-# }
-
-# [data-testid="stMetricDeltaIcon-Up"] {
-#     position: relative;
-#     left: 38%;
-#     -webkit-transform: translateX(-50%);
-#     -ms-transform: translateX(-50%);
-#     transform: translateX(-50%);
-# }
-
-# [data-testid="stMetricDeltaIcon-Down"] {
-#     position: relative;
-#     left: 38%;
-#     -webkit-transform: translateX(-50%);
-#     -ms-transform: translateX(-50%);
-#     transform: translateX(-50%);
-# }
-
-# </style>
-# """, unsafe_allow_html=True)
-
-
-
-#######################
 # Load data
 df_reshaped = pd.read_csv("data/cars.csv",encoding='latin-1')
 
@@ -105,9 +40,7 @@ with st.sidebar:
     
     df_selected_origin_sorted = df_selected_origin.sort_values(by="Units_Sold", ascending=False)
 
-    # color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
-    # selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
-    
+   
     
 #######################
 # Plots
@@ -127,11 +60,10 @@ def make_heatmap(input_df, input_y, input_x, input_color, input_color_theme):
         labelFontSize=12,
         titleFontSize=12
         ) 
-    # height=300
+   
     return heatmap
 
-# Choropleth map
-# Assign mp to the geojson data
+
 with open("data/cars.geojson", "r") as geo:
     mp = json.load(geo)
 def make_choropleth(input_df, input_id, input_column):
